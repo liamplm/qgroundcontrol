@@ -384,8 +384,21 @@ void QGCApplication::setLanguage()
     qDebug() << "System reported locale:" << _locale << "; Name" << _locale.name() << "; Preffered (used in maps): " << (QLocale::system().uiLanguages().length() > 0 ? QLocale::system().uiLanguages()[0] : "None");
 
     QLocale::Language possibleLocale = AppSettings::_qLocaleLanguageID();
+    if (possibleLocale == QLocale::AnyLanguage) {
+        possibleLocale = QLocale::Persian;
+    }
+
     if (possibleLocale != QLocale::AnyLanguage) {
         _locale = QLocale(possibleLocale);
+    }
+    if(_locale == QLocale::Persian) {
+        qCDebug(LocalizationLog) << "Loading Persian fonts" << _locale.name();
+        if(QFontDatabase::addApplicationFont(":/fonts/Vazir-Regular") < 0) {
+            qCWarning(LocalizationLog) << "Could not load /fonts/Vazir-Regular font";
+        }
+        if(QFontDatabase::addApplicationFont(":/fonts/Vazir-Bold") < 0) {
+            qCWarning(LocalizationLog) << "Could not load /fonts/Vazir-Bold font";
+        }
     }
     //-- We have specific fonts for Korean
     if(_locale == QLocale::Korean) {

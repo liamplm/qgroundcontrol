@@ -56,7 +56,9 @@ ScreenToolsController::normalFontFamily() const
 {
     //-- See App.SettinsGroup.json for index
     int langID = qgcApp()->toolbox()->settingsManager()->appSettings()->qLocaleLanguage()->rawValue().toInt();
-    if(langID == QLocale::Korean) {
+    if(langID == QLocale::Persian) {
+        return QString("Vazirmatn");
+    } else if(langID == QLocale::Korean) {
         return QString("NanumGothic");
     } else {
         return QString("Open Sans");

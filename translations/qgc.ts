@@ -14082,6 +14082,14 @@ Click &apos;Ok&apos; to upload the Plan anyway.</source>
     </message>
 </context>
 <context>
+   <name>QGCPopupDialog</name>
+   <message>
+     <location filename="../src/QmlControls/QGCPopupDialog.qml" line="201"/>
+     <source>Close</source>
+     <translation type="unfinished"></translation>
+   </message>
+ </context>
+<context>
     <name>QGCPopupDialogContainer</name>
     <message>
         <location filename="../src/QmlControls/QGCPopupDialogContainer.qml" line="97"/>

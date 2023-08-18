@@ -15,6 +15,7 @@
 #include <QQmlEngine>
 #include <QtQml>
 #include <QStandardPaths>
+#include <QDebug>
 
 const char* AppSettings::parameterFileExtension =   "params";
 const char* AppSettings::planFileExtension =        "plan";
@@ -42,6 +43,7 @@ QList<int> AppSettings::_rgReleaseLanguages = {
     QLocale::English,
     QLocale::Korean,
     QLocale::Azerbaijani,
+    QLocale::Persian
 };
 // Partial languages are 40%+ complete
 QList<int> AppSettings::_rgPartialLanguages = {
@@ -341,7 +343,9 @@ QLocale::Language AppSettings::_qLocaleLanguageID(void)
         static QList<int> rgNewValues = { 0,20,25,30,31,36,37,42,43,48,58,59,66,85,90,91,96,111,114,125,15 };
 
         int oldValue = settings.value("language").toInt();
+        qDebug() << "\noldValue: " << oldValue << ", new: " << rgNewValues[oldValue] << "\n";
         settings.setValue(qLocaleLanguageName, rgNewValues[oldValue]);
+
         settings.remove("language");
     }
 
